@@ -1,18 +1,18 @@
 ---
-title: "6.-Vis._matriz_correlacion_y_regresión_lineal"
+title: "Fitbit_correlación_y_regresión"
 author: "Abel_Sánchez"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r cargar-librerias, warning=TRUE, paged.print=TRUE}
 # Configurar el directorio de trabajo
 if (.Platform$OS.type == "windows") {
-  setwd("C:/Users/FX506/Documents/Portafolio")
+  setwd("C:/Users/FX506/Documents/Abesan7411/Abesan7411.github.io")
 } else {
-  setwd("~/Portafolio")
+  setwd("~/Abesan7411.github.io")
 }
 
 # Limpiar el entorno

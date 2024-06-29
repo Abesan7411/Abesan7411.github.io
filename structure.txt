@@ -1,0 +1,161 @@
+.:
+Bellabeat_2016.Rproj
+LICENSE
+Portafolio_analisis_datos_fitbit.Rmd
+Portafolio_analisis_datos_fitbit.html
+README.md
+backup/
+code/
+data/
+images/
+index.html
+output/
+reports/
+structure.txt
+
+./backup:
+fitbit_correlacion_y_regresion.html
+minsa_analisis_correlacion.html
+
+./code:
+notebooks/
+scripts/
+
+./code/notebooks:
+1.-Exploracion_archivos_fitbit_csv.Rmd
+10.- Visualizacion_enfermedades_cronicas_mujeres.Rmd
+11.- Visualización_nivel_actividad_fisica_mujeres.Rmd
+13.- Consulta_resultados_de matriz_y_regresión_lineal.Rmd
+2.-Modificación_formato_fecha.Rmd
+3.-Prepara_procesar_archivos_comunes.Rmd
+4.-Visualización_promedio_pasos_peso_caloria_cardio.Rmd
+5.-Vis_segmentada_pesos_pasos_caloria_cardio.Rmd
+7.-resultado_matriz_correlacion_linea_regresion.Rmd
+8.- Consulta_estructura_formato_minsaxls.Rmd
+9.- Visualización_percepción_salud_mujeres.Rmd
+Resumen_ejecutivo_caso_Bellabeat_2019_final.Rmd
+fitbit_correlacion_y_regresion.Rmd
+fitbit_correlacion_y_regresion.html
+minsa_analisis_correlacion.Rmd
+minsa_analisis_correlacion.html
+
+./code/scripts:
+1.-Exploración_archivos_seleccionados_total.R
+10.- enfermedades_seleccionar_columnas_limpiar.R
+11.- Nivel_actividad_fisica.R
+12.- Matriz_correlación_percepción_enfermedad-actividad.R
+13.- Consulta_resultados_de matriz_y_regresión_lineal.R
+14.-Genrate_Table_estadistico.R
+15. Generate_table_minsa.R
+2.- Modificación_formato_fecha_y_nombre.R
+3.- Preparar_procesar_archivos_ambas_rutas.R
+4.- Visualización_datos_promedio_pasos_peso_cardio_caloria.R
+5.-Vis_Int_Segm_Pasos_pesos_cardio_calorias.R
+6.- Vis_Matriz_de_correlación_y_linea_de_regresión.R
+7.-Resultados_matrizcorrelación_linea_regresión.R
+8.-Consulta_estructura_formato_excel.R
+9.-percepción_salud_seleccionar_columnas_limpiar.R
+Consulta de estadisticos de minsa.R
+Consultado de estadisticos de fitbit.R
+
+./data:
+Fitbit/
+minsa/
+
+./data/Fitbit:
+Processed_Files/
+raw/
+
+./data/Fitbit/Processed_Files:
+filtered_dailyActivity_merged.csv
+filtered_heartrate_seconds_merged.csv
+filtered_hourlyCalories_merged.csv
+filtered_hourlyIntensities_merged.csv
+filtered_hourlySteps_merged.csv
+filtered_weightLogInfo_merged.csv
+
+./data/Fitbit/raw:
+Fitbit_12.03.16_to_11.04.16/
+Fitbit_12.04.16_to_12.05.16/
+
+./data/Fitbit/raw/Fitbit_12.03.16_to_11.04.16:
+dailyActivity_merged.csv
+heartrate_seconds_merged.csv
+hourlyCalories_merged.csv
+hourlyIntensities_merged.csv
+hourlySteps_merged.csv
+minuteCaloriesNarrow_merged.csv
+minuteIntensitiesNarrow_merged.csv
+minuteMETsNarrow_merged.csv
+minuteSleep_merged.csv
+minuteStepsNarrow_merged.csv
+weightLogInfo_merged.csv
+
+./data/Fitbit/raw/Fitbit_12.04.16_to_12.05.16:
+dailyActivity_merged.csv
+dailyCalories_merged.csv
+dailyIntensities_merged.csv
+dailySteps_merged.csv
+heartrate_seconds_merged.csv
+hourlyCalories_merged.csv
+hourlyIntensities_merged.csv
+hourlySteps_merged.csv
+minuteCaloriesNarrow_merged.csv
+minuteCaloriesWide_merged.csv
+minuteIntensitiesNarrow_merged.csv
+minuteIntensitiesWide_merged.csv
+minuteMETsNarrow_merged.csv
+minuteSleep_merged.csv
+minuteStepsNarrow_merged.csv
+minuteStepsWide_merged.csv
+sleepDay_merged.csv
+weightLogInfo_merged.csv
+
+./data/minsa:
+raw/
+
+./data/minsa/raw:
+Data_encuesta_MINSA_2017_Esp.xls
+datos_ense2017_resumen.xls
+
+./images:
+1.- Visualización_integrada_pasos_peso_cardio_calorias.png
+2.- Vis_Int_Segm_Pasos_peso_cardio_caloria.png
+3.- Matriz_correlación_pasos_calorias_cardio_peso.png
+4.-Linea_regresión_Pasos_vs_Calorias.png
+5.-Nivel_percepción_salud_graf.png
+6.-Prevalencia_enfermedades_graf.png
+7.-Nivel_actividad_fisica.png
+8.- Matriz_correlación_percepción_enfermedad_actividad.png
+correlation_high_activity.png
+correlation_low_activity.png
+correlation_moderate_activity.png
+datatable_high_activity.png
+datatable_low_activity.png
+datatable_minsa_correlation.png
+datatable_moderate_activity.png
+linea_regresion_pasos_vs_calorias.png
+matriz_correlacion_percepcion_enfermedad_actividad.png
+matriz_correlación_pasos_calorias_cardio_peso.png
+nivel_actividad_fisica.png
+nivel_percepcion_salud_graf.png
+prevalencia_enfermedades_graf.png
+vis_int_segm_pasos_peso_cardio_caloria.png
+visualizacion_integrada_pasos_peso_cardio_calorias.png
+
+./output:
+fitbit/
+minsa/
+
+./output/fitbit:
+correlation_matrices.rds
+regression_results.rds
+
+./output/minsa:
+matriz_correlacion.rds
+modelo_regresion.rds
+
+./reports:
+Resumen_ejecutivo_caso_Bellabeat_2019_final.pdf
+fitbit_correlacion_y_regresion.pdf
+minsa_analisis_correlacion.pdf
