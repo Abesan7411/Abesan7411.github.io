@@ -1,121 +1,126 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Análisis de Datos</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Portafolio de Análisis de Datos</h1>
-    <p>Bienvenido a mi portafolio de análisis de datos. Aquí presento algunos de los proyectos en los que he trabajado.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Portafolio de Análisis de Datos</h1>
+                <p>Bienvenido a mi portafolio de análisis de datos. Aquí presento algunos de los proyectos en los que he trabajado.</p>
+                
+                <h2>Estructura del Proyecto</h2>
+                <ul>
+                    <li>code/: Contiene los archivos RMarkdown y scripts R.
+                        <ul>
+                            <li><a href="./code/notebooks/">Notebooks</a></li>
+                            <li><a href="./code/scripts/">Scripts</a></li>
+                        </ul>
+                    </li>
+                    <li>data/: Contiene los datos sin procesar y procesados.
+                        <ul>
+                            <li><a href="./data/Fitbit/raw/">Datos Fitbit</a></li>
+                            <li><a href="./data/Fitbit/Processed_Files/">Datos Fitbit Procesados</a></li>
+                            <li><a href="./data/minsa/raw/">Datos MINSA</a></li>
+                        </ul>
+                    </li>
+                    <li>images/: Contiene las imágenes generadas por los análisis.</li>
+                    <li>reports/: Contiene los informes HTML y PDF generados.</li>
+                    <li>README.md: Este archivo, que proporciona una descripción general del proyecto.</li>
+                </ul>
 
-    <h2>Estructura del Proyecto</h2>
-    <ul>
-        <li><code>code/</code>: Contiene los archivos RMarkdown y scripts R.
-            <ul>
-                <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/code/notebooks">Notebooks</a></li>
-                <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/code/scripts">Scripts</a></li>
-            </ul>
-        </li>
-        <li><code>data/</code>: Contiene los datos sin procesar y procesados.
-            <ul>
-                <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/data/Fitbit/raw">Datos Fitbit</a></li>
-                <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/data/Fitbit/Processed_Files">Datos Fitbit Procesados</a></li>
-                <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/data/minsa/raw">Datos MINSA</a></li>
-            </ul>
-        </li>
-        <li><code>images/</code>: Contiene las imágenes generadas por los análisis.</li>
-        <li><code>reports/</code>: Contiene los informes HTML y PDF generados.</li>
-        <li><code>README.md</code>: Este archivo, que proporciona una descripción general del proyecto.</li>
-    </ul>
+                <h2>Proyectos</h2>
+                <h3>Análisis de Datos de Fitbit</h3>
+                <p><strong>Descripción</strong>: Análisis de datos de actividad física, frecuencia cardíaca y peso registrados por dispositivos Fitbit.</p>
+                <ul>
+                    <li><a href="./code/notebooks/fitbit_correlacion_y_regresion.html">Fitbit RMarkdown</a></li>
+                    <li><a href="./reports/fitbit_correlacion_y_regresion.pdf">Fitbit análisis estadistico PDF</a></li>
+                </ul>
 
-    <h2>Proyectos</h2>
-    <h3>Análisis de Datos de Fitbit</h3>
-    <p><strong>Descripción</strong>: Análisis de datos de actividad física, frecuencia cardíaca y peso registrados por dispositivos Fitbit.</p>
-    <p><strong>Archivos</strong>:</p>
-    <ul>
-        <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/blob/main/code/notebooks/fitbit_correlacion_y_regresion.html">Fitbit RMarkdown</a></li>
-        <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/blob/main/reports/fitbit_correlacion_y_regresion.pdf">Fitbit análisis estadístico PDF</a></li>
-    </ul>
+                <h3>Análisis de Datos del MINSA</h3>
+                <p><strong>Descripción</strong>: Análisis de datos proporcionados por el MINSA sobre la percepción de salud, enfermedades crónicas y nivel de actividad física.</p>
+                <ul>
+                    <li><a href="./code/notebooks/minsa_analisis_correlacion.html">Minsa RMarkdown</a></li>
+                    <li><a href="./reports/minsa_analisis_correlacion.pdf">Minsa análisis estadistico PDF</a></li>
+                </ul>
 
-    <h3>Análisis de Datos del MINSA</h3>
-    <p><strong>Descripción</strong>: Análisis de datos proporcionados por el MINSA sobre la percepción de salud, enfermedades crónicas y nivel de actividad física.</p>
-    <p><strong>Archivos</strong>:</p>
-    <ul>
-        <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/blob/main/code/notebooks/minsa_analisis_correlacion.html">Minsa RMarkdown</a></li>
-        <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/blob/main/reports/minsa_analisis_correlacion.pdf">Minsa análisis estadístico PDF</a></li>
-    </ul>
+                <h2>Datos</h2>
+                <ul>
+                    <li><strong>Fitbit</strong>: Datos de actividad física recopilados entre marzo y mayo de 2016.
+                        <ul>
+                            <li><a href="./data/Fitbit/raw/">Datos Fitbit</a></li>
+                            <li><a href="./data/Fitbit/Processed_Files/">Datos Fitbit Procesados</a></li>
+                        </ul>
+                    </li>
+                    <li><strong>MINSA</strong>: Datos de la encuesta de salud realizada en 2017.
+                        <ul>
+                            <li><a href="./data/minsa/raw/">Datos MINSA</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-    <h2>Datos</h2>
-    <h3>Fitbit</h3>
-    <p>Datos de actividad física recopilados entre marzo y mayo de 2016.</p>
-    <ul>
-        <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/data/Fitbit/raw">Datos Fitbit</a></li>
-        <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/data/Fitbit/Processed_Files">Datos Fitbit Procesados</a></li>
-    </ul>
-    <h3>MINSA</h3>
-    <p>Datos de la encuesta de salud realizada en 2017.</p>
-    <ul>
-        <li><a href="https://github.com/Abesan7411/Abesan7411.github.io/tree/main/data/minsa/raw">Datos MINSA</a></li>
-    </ul>
+                <h2>Resultados Visuales</h2>
+                <ul>
+                    <li><strong>Visualización de los datos de Fitbit</strong>:
+                        <ul>
+                            <li><img src="./images/visualizacion_integrada_pasos_peso_cardio_calorias.png" alt="Visualización de los datos en promedios"></li>
+                            <li><img src="./images/vis_int_segm_pasos_peso_cardio_caloria.png" alt="Visualización de los datos por segmentos"></li>
+                        </ul>
+                    </li>
+                    <li><strong>Visualización de los datos del MINSA</strong>:
+                        <ul>
+                            <li><img src="./images/nivel_percepcion_salud_graf.png" alt="Percepción de la salud"></li>
+                            <li><img src="./images/prevalencia_enfermedades_graf.png" alt="Prevalencia de las enfermedades"></li>
+                            <li><img src="./images/nivel_actividad_fisica.png" alt="Nivel de actividad física por grupo etáreo"></li>
+                            <li><img src="./images/matriz_correlacion_percepcion_enfermedad_actividad.png" alt="Matriz de correlación"></li>
+                        </ul>
+                    </li>
+                </ul>
 
-    <h2>Resultados Visuales</h2>
-    <h3>Visualización de los datos de Fitbit:</h3>
-    <ul>
-        <li><img src="images/visualizacion_integrada_pasos_peso_cardio_calorias.png" alt="Visualización de los datos en promedios"></li>
-        <li><img src="images/vis_int_segm_pasos_peso_cardio_caloria.png" alt="Visualización de los datos por segmentos"></li>
-    </ul>
+                <h2>Resumen Ejecutivo</h2>
+                <h3>Introducción</h3>
+                <p>En este informe se presentan los resultados de dos análisis de datos distintos: uno enfocado en los datos de actividad física recopilados por dispositivos Fitbit y otro en los datos proporcionados por el MINSA. Ambos análisis buscan extraer insights valiosos para la toma de decisiones informadas.</p>
+                <h3>Metodología</h3>
+                <p>Para el uso de los datos de Fitbit y el MINSA, se partió del escenario supuesto en el momento de que se realizó el análisis, esto vendría a ser en setiembre 2019, fecha en que la gerencia de Bellabeat disponía del marco de datos. El primero es una recopilación de los datos que da el App de FitBit mediante el uso de su pulsera, los datos abarcan 2 meses entre marzo y mayo 2016, y el segundo es un extracto de los datos de la encuestas hecha en España sobre la percepción de salud, enfermedades recurrentes y actividad física, durante el 2017; para ambos grupos de datos enfocados en la mujer. La finalidad de usar ambas fuentes es que la segunda al ser posterior sirva para validar la información preliminar que dan las pulseras de Fitbit y luego Bellabeat con esa información haga su análisis interno, para establecer sus estrategias de marketing, enfocadas en fidelizar al cliente e incrementar las ventas.</p>
+                <h3>Resultados Principales</h3>
+                <h4>Fitbit</h4>
+                <p><strong>Resumen Estadístico</strong>: Los datos de Fitbit mostraron patrones significativos en la actividad física y su relación con el gasto calórico.</p>
+                <p><strong>Correlación y Regresión</strong>: Se identificaron correlaciones moderadas entre el número de pasos dados y el gasto calórico. Los modelos de regresión mostraron que el número de pasos es un predictor significativo del gasto calórico.</p>
+                <h4>MINSA</h4>
+                <p><strong>Resumen Estadístico</strong>: Los datos del MINSA revelaron tendencias clave en los indicadores de salud a lo largo del tiempo.</p>
+                <p><strong>Análisis Gráfico</strong>: Se observaron patrones de variación en los valores de salud, destacando áreas donde se pueden focalizar intervenciones de salud pública.</p>
 
-    <h3>Visualización de los datos del MINSA:</h3>
-    <ul>
-        <li><img src="images/nivel_percepcion_salud_graf.png" alt="Percepción de la salud"></li>
-        <li><img src="images/prevalencia_enfermedades_graf.png" alt="Prevalencia de las enfermedades"></li>
-        <li><img src="images/nivel_actividad_fisica.png" alt="Nivel de actividad física por grupo etáreo"></li>
-        <li><img src="images/matriz_correlacion_percepcion_enfermedad_actividad.png" alt="Matriz de correlación"></li>
-    </ul>
+                <h3>Conclusiones y Recomendaciones</h3>
+                <h4>Fitbit</h4>
+                <p>El análisis de los datos de Fitbit sugiere que hay una relación significativa entre la cantidad de pasos dados y el gasto calórico. Esto indica que el seguimiento de la actividad física puede ser una herramienta eficaz para promover la salud.</p>
+                <p><strong>Recomendación</strong>: Bellabeat podría desarrollar campañas para fomentar el uso de dispositivos de seguimiento de actividad física y proporcionar feedback personalizado basado en los datos de actividad de los usuarios.</p>
+                <h4>MINSA</h4>
+                <p>Los resultados del análisis de datos del MINSA destacan la importancia de monitorear continuamente los indicadores de salud para identificar tendencias emergentes y focalizar las intervenciones de salud pública.</p>
+                <p><strong>Recomendación</strong>: Bellabeat podría colaborar con autoridades de salud pública para compartir datos y desarrollar programas conjuntos que aborden las necesidades específicas de la población, mejorando los resultados de salud a través de políticas basadas en datos.</p>
 
-    <h2>Resumen Ejecutivo</h2>
-    <h3>Introducción</h3>
-    <p>En este informe se presentan los resultados de dos análisis de datos distintos: uno enfocado en los datos de actividad física recopilados por dispositivos Fitbit y otro en los datos proporcionados por el MINSA. Ambos análisis buscan extraer insights valiosos para la toma de decisiones informadas.</p>
+                <h3>Implementación de Estrategias</h3>
+                <h4>Integración de Dispositivos y Datos</h4>
+                <p>Bellabeat podría integrar dispositivos de seguimiento de actividad física con una plataforma que también recoja datos de salud pública. Esta integración permitiría un análisis más completo y personalizado, beneficiando tanto a los usuarios individuales como a la comunidad en general.</p>
+                <h4>Campañas de Salud y Bienestar</h4>
+                <p>Desarrollar campañas que utilicen los insights obtenidos de los análisis de Fitbit y MINSA para promover hábitos saludables. Estas campañas podrían incluir recomendaciones personalizadas, programas de ejercicio, y recordatorios para chequeos médicos regulares basados en las tendencias observadas en los datos.</p>
 
-    <h3>Metodología</h3>
-    <p>Para el uso de los datos de Fitbit y el MINSA, se partió del escenario supuesto en el momento de que se realizó el análisis, esto vendría a ser en setiembre 2019, fecha en que la gerencia de Bellabeat disponía del marco de datos. El primero es una recopilación de los datos que da el App de FitBit mediante el uso de su pulsera, los datos abarcan 2 meses entre marzo y mayo 2016, y el segundo es un extracto de los datos de la encuestas hecha en España sobre la percepción de salud, enfermedades recurrentes y actividad física, durante el 2017; para ambos grupos de datos enfocados en la mujer. La finalidad de usar ambas fuentes es que la segunda al ser posterior sirva para validar la información preliminar que dan las pulseras de Fitbit y luego Bellabeat con esa información haga su análisis interno, para establecer sus estrategias de marketing, enfocadas en fidelizar al cliente e incrementar las ventas.</p>
+                <h3>Consideraciones y Limitaciones</h3>
+                <h4>Uso de Herramientas y Soporte Tecnológico</h4>
+                <p>Este informe se ha desarrollado con el apoyo de diversas herramientas y plataformas tecnológicas. Aunque mi formación en contabilidad, el máster en finanzas, formaciones en marketing y mi experiencia previa como senior contador y controller financiero durante aproximadamente 15 años han sido fundamentales para comprender y analizar los datos, el soporte de herramientas avanzadas, incluyendo la inteligencia artificial (IA), ha sido crucial para el desarrollo y perfeccionamiento del código utilizado en este análisis.</p>
 
-    <h3>Resultados Principales</h3>
-    <h4>Fitbit</h4>
-    <ul>
-        <li><strong>Resumen Estadístico</strong>: Los datos de Fitbit mostraron patrones significativos en la actividad física y su relación con el gasto calórico.</li>
-        <li><strong>Correlación y Regresión</strong>: Se identificaron correlaciones moderadas entre el número de pasos dados y el gasto calórico. Los modelos de regresión mostraron que el número de pasos es un predictor significativo del gasto calórico.</li>
-    </ul>
-    <h4>MINSA</h4>
-    <ul>
-        <li><strong>Resumen Estadístico</strong>: Los datos del MINSA revelaron tendencias clave en los indicadores de salud a lo largo del tiempo.</li>
-        <li><strong>Análisis Gráfico</strong>: Se observaron patrones de variación en los valores de salud, destacando áreas donde se pueden focalizar intervenciones de salud pública.</li>
-    </ul>
+                <h3>Resumen Ejecutivo</h3>
+                <ul>
+                    <li><a href="./reports/Resumen_ejecutivo_caso_Bellabeat_2019_final.pdf">Resumen Ejecutivo</a></li>
+                </ul>
 
-    <h3>Conclusiones y Recomendaciones</h3>
-    <h4>Fitbit</h4>
-    <p>El análisis de los datos de Fitbit sugiere que hay una relación significativa entre la cantidad de pasos dados y el gasto calórico. Esto indica que el seguimiento de la actividad física puede ser una herramienta eficaz para promover la salud.</p>
-    <p><strong>Recomendación</strong>: Bellabeat podría desarrollar campañas para fomentar el uso de dispositivos de seguimiento de actividad física y proporcionar feedback personalizado basado en los datos de actividad de los usuarios.</p>
-
-    <h4>MINSA</h4>
-    <p>Los resultados del análisis de datos del MINSA destacan la importancia de monitorear continuamente los indicadores de salud para identificar tendencias emergentes y focalizar las intervenciones de salud pública.</p>
-    <p><strong>Recomendación</strong>: Bellabeat podría colaborar con autoridades de salud pública para compartir datos y desarrollar programas conjuntos que aborden las necesidades específicas de la población, mejorando los resultados de salud a través de políticas basadas en datos.</p>
-
-    <h3>Implementación de Estrategias</h3>
-    <h4>Integración de Dispositivos y Datos</h4>
-    <p>Bellabeat podría integrar dispositivos de seguimiento de actividad física con una plataforma que también recoja datos de salud pública. Esta integración permitiría un análisis más completo y personalizado, beneficiando tanto a los usuarios individuales como a la comunidad en general.</p>
-
-    <h4>Campañas de Salud y Bienestar</h4>
-    <p>Desarrollar campañas que utilicen los insights obtenidos de los análisis de Fitbit y MINSA para promover hábitos saludables. Estas campañas podrían incluir recomendaciones personalizadas, programas de ejercicio, y recordatorios para chequeos médicos regulares basados en las tendencias observadas en los datos.</p>
-
-    <h3>Consideraciones y Limitaciones</h3>
-    <h4>Uso de Herramientas y Soporte Tecnológico</h4>
-    <p>Este informe se ha desarrollado con el apoyo de diversas herramientas y plataformas tecnológicas. Aunque mi formación en contabilidad, el máster en finanzas, formaciones en marketing y mi experiencia previa como senior contador y controller financiero durante aproximadamente 15 años han sido fundamentales para comprender y analizar los datos, el soporte de herramientas avanzadas, incluyendo la inteligencia artificial (IA), ha sido crucial para el desarrollo y perfeccionamiento del código utilizado en este análisis.</p>
-
-    <p><a href="reports/Resumen_ejecutivo_caso_Bellabeat_2019_final.pdf">Resumen Ejecutivo</a></p>
-
-    <h2>Contacto</h2>
-    <p>Si tienes alguna pregunta, puedes contactarme en <a href="mailto:abelsanchezncfo@gmail.com">abelsanchezncfo@gmail.com</a>.</p>
+                <h2>Contacto</h2>
+                <p>Si tienes alguna pregunta, puedes contactarme en abelsanchezncfo@gmail.com.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
