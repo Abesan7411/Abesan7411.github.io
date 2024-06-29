@@ -1,0 +1,278 @@
+---
+title: "Resumen Ejecutivo: Análisis de Datos de Fitbit y MINSA"
+author: "Abel Sánchez"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    fig_width: 7
+    fig_height: 5
+    pandoc_args:
+      - "--variable"
+      - "geometry:margin=1in"
+  html_document:
+    df_print: paged
+    fig_width: 7
+    fig_height: 5
+    toc: true
+    toc_depth: 3
+    theme: flatly
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Configurar el directorio de trabajo para facilitar las referencias a los archivos
+if (.Platform$OS.type == "windows") {
+  setwd("C:/Users/FX506/Documents/Portafolio")
+} else {
+  setwd("~/Portafolio")
+}
+
+# Instalar y cargar el paquete corrplot si no está ya instalado
+if (!requireNamespace("corrplot", quietly = TRUE)) {
+  install.packages("corrplot")
+}
+library(corrplot)
+```
+
+### Introducción
+Este informe sintetiza los análisis realizados sobre dos conjuntos de datos: los recogidos por dispositivos Fitbit y los proporcionados por el MINSA. Estos análisis apuntan a obtener insights que apoyen decisiones informadas y estratégicas en Bellabeat.
+
+### Objetivo: 
+Documentar el proceso de análisis de datos aplicado al caso de Fitbit para Bellabeat, sirviendo como una guía práctica y educativa para estudiantes y profesionales del análisis de datos.
+
+### Importancia del Análisis de Datos: 
+Es crucial para tomar decisiones informadas y mejorar estrategias de negocio. Este proyecto analiza datos de dispositivos Fitbit para extraer insights valiosos que pueden beneficiar a Bellabeat.
+
+### Breve Descripción del Proyecto Fitbit: 
+Se enfoca en analizar datos de actividad física, frecuencia cardíaca y peso registrados por dispositivos Fitbit, con el objetivo de extraer insights y formular recomendaciones estratégicas para Bellabeat.
+
+### Experiencia del Autor
+Soy un profesional con más de 15 años de experiencia en contabilidad y finanzas, complementada con una formación en marketing y un máster en finanzas. He trabajado como contador y controller financiero en diversos sectores, el mayor tiempo fue en agencias de publicidad y centrales de medios,globales; recientemente he completado la certificación de Google en análisis de datos. Esta mezcla de conocimientos y experiencia me ha permitido abordar el análisis de datos desde una perspectiva tanto técnica como de negocio.
+
+### Problemas Identificados
+La socia fundadora, Urška Sršen, estima que con datos sobre la actividad física de los usuarios de los dispositivos tecnológicos se podrían desarrollar nuevas estrategias de marketing para generar nuevas oportunidades de negocio para Bellabeat. La empresa cuenta con dispositivos (Leaf, Time, Spring) y una aplicación que recopilan datos sobre salud, enfocados en mujeres.
+
+### Estrategias para Resolver los Problemas
+Identificación de Información Clave: Recopilar datos sobre los parámetros medidos por los dispositivos (actividad física, sueño, estrés, ciclo menstrual, hábitos de conciencia plena).
+
+### Establecimiento de Tendencias: 
+Analizar datos históricos para identificar patrones y comportamientos recurrentes entre los usuarios.
+
+### Análisis Comparativo: 
+Se compararan los datos estadisticos de Fitbit con los datos estadisticos del Ministerio de Salud de España, así podremos corroborar si la información que proporciona la pulsera de Fitbit es relevante respecto a los datos de la encuesta sobre la percepción de la salud, la prevalencia de enfermedades y nivel de actividad fisica. 
+
+### Preguntas para Resolver
+
+# Tendencias de Uso: 
+¿Cuáles son algunas tendencias de uso de los dispositivos inteligentes?
+Analizar datos de uso como la frecuencia de uso, horas pico de actividad, características demográficas de los usuarios activos.
+
+# Aplicación de Tendencias: 
+¿Cómo se podrían aplicar estas tendencias a los clientes de Bellabeat?
+
+Personalizar las recomendaciones y estrategias de marketing basadas en los patrones de uso y preferencias de las usuarias.
+
+# Influencia en Estrategia de Marketing: 
+¿Cómo podrían ayudar estas tendencias a influir en la estrategia de marketing de Bellabeat?
+Desarrollar campañas de marketing dirigidas a segmentos específicos de usuarias, basadas en sus hábitos y necesidades identificadas.
+
+### Preparación y Ubicación de los Datos
+
+1.- Ubicación de los Datos:
+Carpeta: data/fitbit/raw
+
+2.- Organización de los Datos:
+Formato Ancho/Largo
+
+3.-  Credibilidad de los Datos (ROCCC):
+Confiabilidad: Alta
+Originalidad: Original
+Integridad: Integral
+Actualidad: Actual
+Citación: Citados correctamente
+
+4.- Autorización, Privacidad, Seguridad y Accesibilidad:
+Autorización: Permiso obtenido
+Privacidad: Datos anonimizados
+Seguridad: Encriptación aplicada
+Accesibilidad: Accesibles para análisis
+
+5.- Verificación de la Integridad de los Datos:
+Datos verificados: Sin errores
+
+6.- Relevancia de los Datos para Responder las Preguntas:
+Datos relevantes: Ayudan a responder las preguntas clave
+
+7.- Problemas Identificados en los Datos:
+Problemas: Datos faltantes, inconsistencias
+
+### Procesamiento de Datos
+
+1.- Herramientas Elegidas y Por Qué: 
+Se eligió R por su potencia y versatilidad en el procesamiento de datos, y por los paquetes como tidyverse que facilitan la manipulación y análisis de datos.
+
+2.- Garantía de Integridad de los Datos: 
+Mediante acceso controlado y técnicas de verificación y limpieza.
+
+3.-  Pasos para Garantizar que los Datos Están Limpios:
+Verificación y carga de archivos CSV.
+Inspección mediante visualización de primeras filas y resúmenes estadísticos.
+Conversión de columnas de fechas al formato correcto.
+Filtrado de datos en un rango de fechas específico.
+Selección de columnas relevantes.
+Unión de datasets.
+Identificación y gestión de valores faltantes y atípicos.
+Guardado de datos limpios en un nuevo archivo CSV.
+
+4.- Verificación de que los Datos Están Limpios y Listos para Analizar:
+Inspección visual y análisis exploratorio.
+Resúmenes estadísticos y visualización de valores atípicos.
+
+5.- Documentación del Proceso de Limpieza:
+El proceso se documentó en un archivo R Markdown (.Rmd) que contiene el código utilizado para la limpieza de datos, explicaciones y resultados intermedios.
+
+### Metodología
+Se utilizaron datos de Fitbit y del MINSA, basados en escenarios hipotéticos de septiembre de 2019, para analizar la actividad física y datos de salud de encuestas españolas centradas en mujeres durante 2017. Esto busca validar tendencias y apoyar futuras estrategias de marketing para Bellabeat.
+
+### Análisis y Resultados
+Datos de Fitbit
+Período Analizado: Marzo a Mayo de 2016.
+Análisis Realizados: Análisis estadísticos avanzados como correlaciones y regresiones.
+
+# Visualización Integrada de Datos
+
+![Visualización de los datos en promedios](C:/Users/FX506/Documents/Portafolio/images/1.- Visualización_integrada_pasos_peso_cardio_calorias.png)
+
+# Visualización por Segmentos
+
+![Visualización de los datos por segmentos](C:/Users/FX506/Documents/Portafolio/images/2.- Vis_Int_Segm_Pasos_peso_cardio_caloria.png)
+
+### Matriz de Correlación
+
+1.- Correlaciones Moderadas: Entre el número de pasos y el gasto calórico.
+
+![Matriz de correlación](C:/Users/FX506/Documents/Portafolio/images/3.- Matriz_correlación_pasos_calorias_cardio_peso.png)
+
+
+# Análisis Realizados: Análisis estadísticos avanzados como correlaciones.
+
+Los datos de las pulseras Fitbit fueron analizados para identificar correlaciones entre diferentes parámetros de actividad física y métricas de salud. Se crearon matrices de correlación para tres niveles de actividad: moderada, alta y baja.
+
+1.- Actividad Moderada:
+
+TotalSteps y Calories: Correlación negativa (-0.2808). Esto sugiere que en niveles moderados de actividad, un aumento en los pasos totales podría no estar directamente asociado con un aumento en las calorías quemadas.
+TotalSteps y WeightKg: Correlación positiva (0.1181). Aunque débil, indica que a medida que aumentan los pasos, puede haber una ligera tendencia a la reducción de peso.
+
+![Moderate Activity Correlation Matrix](C:/Users/FX506/Documents/Portafolio/images/datatable_moderate_activity.png)
+2.- Actividad Alta:
+
+TotalSteps y Calories: Correlación positiva fuerte (0.5994). En niveles altos de actividad, hay una fuerte relación directa entre los pasos dados y las calorías quemadas, lo que respalda la idea de que la actividad física intensa contribuye significativamente a la quema de calorías.
+Calories y WeightKg: Correlación negativa (-0.2897). Esto implica que, con mayor quema de calorías, hay una tendencia a la pérdida de peso.
+![High Activity Correlation Matrix](C:/Users/FX506/Documents/Portafolio/images/datatable_high_activity.png)
+Actividad Baja:
+
+Todos los valores son NA, indicando que no hay datos suficientes o válidos para este nivel de actividad.
+
+![Low Activity Correlation Matrix](C:/Users/FX506/Documents/Portafolio/images/datatable_low_activity.png)
+
+### Linea de regresión Fitbit 
+
+Modelos de Regresión: El número de pasos es un predictor significativo del gasto calórico.
+
+![Linea de regresiónl de percepción](C:/Users/FX506/Documents/Portafolio/images/4.-Linea_regresión_Pasos_vs_Calorias.png)
+
+# Resultados de Regresión de Actividades de Fitbit
+
+Se realizaron análisis de regresión para evaluar la relación entre los pasos totales y las calorías quemadas.
+
+1.- Actividad Moderada:
+
+TotalSteps y Calories: La regresión no mostró una relación significativa (p-valor = 0.4643). Esto sugiere que en niveles moderados de actividad, los pasos totales no son un buen predictor de las calorías quemadas.
+
+2.- Actividad Alta:
+
+TotalSteps y Calories: Relación significativa (p-valor = 0.000179). A medida que aumentan los pasos en niveles de alta actividad, se predice un aumento significativo en las calorías quemadas. Este modelo explica el 35.93% de la variabilidad en las calorías quemadas.
+
+3.- Actividad Baja:
+
+Los resultados no son significativos debido a la falta de datos suficientes.
+
+### Datos del MINSA
+
+Análisis Realizados: Percepciones de salud y enfermedades cronicas, utilizando tecnicas estadísticas y visuales.
+
+![Nivel de percepción](C:/Users/FX506/Documents/Portafolio/images/5.-Nivel_percepción_salud_graf.png)
+
+![Prevalencia de enfermedades](C:/Users/FX506/Documents/Portafolio/images/6.-Prevalencia_enfermedades_graf.png)
+
+![Nivel de actividad](C:/Users/FX506/Documents/Portafolio/images/7.-Nivel_actividad_fisica.png)
+### Análisis de Correlación y Regresión de MINSA
+Los datos del MINSA de 2017 proporcionan información sobre percepciones de salud y enfermedades crónicas entre las mujeres en España. Se realizó un análisis de correlación y regresión para evaluar la relación entre diferentes factores de salud.
+
+# Matriz de Correlación de MINSA
+La matriz de correlación de MINSA muestra las relaciones entre diversas percepciones de salud y condiciones crónicas.
+
+muy_bueno y bueno: Fuerte correlación positiva (0.8838), indicando que quienes perciben su salud como muy buena tienden también a evaluarla como buena en otras dimensiones.
+regular y malo: Fuerte correlación positiva (0.9432), sugiriendo que las percepciones de salud regular están altamente asociadas con evaluaciones negativas de salud.
+tension_alta y artrosis: Fuerte correlación positiva (0.9930), indicando una alta prevalencia conjunta de tensión alta y artrosis.
+
+![Matriz de correlación](C:/Users/FX506/Documents/Portafolio/images/8.- Matriz_correlación_percepción_enfermedad_actividad.png)
+
+![Tabla de matriz de correlación minsa](C:/Users/FX506/Documents/Portafolio/images/datatable_minsa_correlation.png)
+
+# Resultados de Regresión de MINSA
+El modelo de regresión examina la relación entre el nivel de actividad física y la percepción de salud, considerando múltiples factores.
+
+Significancia: El modelo explica el 97.68% de la variabilidad en la percepción de salud basada en el nivel de actividad física y otros factores, aunque los p-valores indican que individualmente, las variables no son estadísticamente significativas, lo que puede deberse a la multicolinealidad o al tamaño reducido de la muestra.
+
+# Conexión entre Fitbit y MINSA
+Los datos de Fitbit y MINSA juntos proporcionan una visión comprensiva de cómo la actividad física influye en la salud general de las mujeres. Aunque los datos de Fitbit se centran en la actividad diaria y las métricas físicas inmediatas, los datos de MINSA refuerzan la importancia de la actividad física para la salud a largo plazo.
+
+1.-Correlación entre Actividad y Salud: Ambas fuentes de datos muestran que la actividad física tiene una relación directa con diversas métricas de salud. Los datos de Fitbit sugieren que niveles altos de actividad están fuertemente correlacionados con una mayor quema de calorías, lo que es crucial para la gestión del peso. Los datos de MINSA, por otro lado, muestran que percepciones positivas de salud y menor prevalencia de enfermedades crónicas están asociadas con niveles más altos de actividad física.
+
+2.- Relevancia de las Encuestas de Salud: Los datos de la encuesta de salud del MINSA de 2017 validan la importancia de monitorear y fomentar la actividad física, especialmente entre las mujeres. Las correlaciones encontradas entre la percepción de buena salud y menor prevalencia de condiciones como la tensión alta y la artrosis sugieren que la actividad física puede ser un factor clave para mejorar la salud y reducir el riesgo de enfermedades crónicas.
+
+3.- En conclusión, el análisis integrado de los datos de Fitbit y MINSA subraya la necesidad de promover la actividad física regular como una estrategia fundamental para mejorar la salud de las mujeres. La recopilación continua de datos a través de dispositivos como Fitbit, junto con encuestas de salud, puede proporcionar insights valiosos para el desarrollo de políticas de salud pública y estrategias de marketing de salud.
+
+
+### Conclusiones y Recomendaciones
+
+# Fitbit
+
+Conclusión: Relación significativa entre la cantidad de pasos y el gasto calórico, sugiriendo que el seguimiento de la actividad física puede promover la salud.
+
+Recomendación: Bellabeat podría desarrollar campañas para fomentar el uso de dispositivos de seguimiento de actividad física y proporcionar feedback personalizado basado en los datos de actividad de los usuarios.
+
+# MINSA
+
+Conclusión: La importancia de monitorear continuamente los indicadores de salud para identificar tendencias y focalizar las intervenciones de salud pública.
+
+Recomendación: Bellabeat podría colaborar con autoridades de salud pública para compartir datos y desarrollar programas conjuntos que aborden las necesidades específicas de la población, mejorando los resultados de salud a través de políticas basadas en datos.
+
+### Implementación de Estrategias
+Integración de Dispositivos y Datos: Bellabeat podría integrar dispositivos de seguimiento de actividad física con una plataforma que también recoja datos de salud pública, permitiendo un análisis más completo y personalizado.
+Campañas de Salud y Bienestar: Desarrollar campañas que utilicen los insights obtenidos de los análisis de Fitbit y MINSA para promover hábitos saludables, con recomendaciones personalizadas y programas de ejercicio.
+
+### Consideraciones y Limitaciones
+
+# Uso de Herramientas y Soporte Tecnológico
+Este informe se desarrolló con el apoyo de diversas herramientas y plataformas tecnológicas. Mi experiencia en contabilidad, finanzas, marketing y análisis de datos, complementada con la asistencia de inteligencia artificial (IA), fue crucial para el desarrollo y perfeccionamiento del código utilizado en este análisis.
+
+# Soporte de la Inteligencia Artificial
+A lo largo del desarrollo de este proyecto, utilicé una plataforma de IA para obtener asistencia en la escritura y depuración del código en R. Esta herramienta me permitió profundizar en el uso de R, más allá de lo aprendido en la certificación de Google.
+
+# Transparencia y Ética Profesional
+A pesar de la asistencia de IA, todos los análisis y conclusiones son del autor. La IA fue una herramienta de apoyo, no un sustituto del juicio profesional.
+
+# Limitaciones del Análisis
+Datos Utilizados: Limitaciones inherentes a los datos de Fitbit y MINSA.
+Alcance del Estudio: Enfocado en datos específicos de actividad física y salud.
+Herramientas y Técnicas: La interpretación de resultados está sujeta a la calidad de los datos y los modelos utilizados.
+
+### Reflexión Final
+Este proyecto ha sido una oportunidad para combinar la experiencia en análisis de datos con el aprendizaje de nuevas herramientas tecnológicas. Compromiso con principios éticos y uso responsable de la tecnología.
+
+```{r cars}
+summary(cars)
+```

@@ -1,0 +1,37 @@
+---
+title: "7.-Resultados_matriz_correlacion_linea_regresion"
+author: "Abel_Sánchez"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, echo=FALSE}
+# Configurar el directorio de trabajo
+
+# Configurar el directorio de trabajo
+if (.Platform$OS.type == "windows") {
+  setwd("C:/Users/FX506/Documents/Portafolio/Bellabeat_2016")
+} else {
+  setwd("~/Portafolio/Bellabeat_2016")
+}
+setwd("output/fitbit")
+
+# Cargar los archivos RDS
+correlation_matrices <- readRDS("correlation_matrices.rds")
+regression_results <- readRDS("regression_results.rds")
+
+# Visualizar matrices de correlación
+print(correlation_matrices)
+
+# Visualizar una matriz de correlación específica
+print(correlation_matrices[["Low Activity"]])
+
+# Visualizar resultados de regresión
+print(regression_results)
+
+# Visualizar los resultados de una regresión específica
+print(regression_results[["Low Activity"]])
+
+summary(cars)
+
+```

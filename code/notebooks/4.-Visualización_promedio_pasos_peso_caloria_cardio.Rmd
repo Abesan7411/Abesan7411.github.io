@@ -1,0 +1,97 @@
+---
+title: "4.-Visualización_datos_promedio_pasos_peso_caloria_cardio"
+author: "Abel_Sánchez"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Detectar sistema operativo y configurar el directorio de trabajo en consecuencia
+if (.Platform$OS.type == "windows") {
+  setwd("C:/Users/FX506/Documents/Portafolio/Bellabeat_2016")
+} else {
+  setwd("~/Portafolio/Bellabeat_2016")
+}
+
+# Limpiar el entorno
+rm(list = ls())
+gc()
+
+# Cargar las librerías
+library(tidyverse)
+library(lubridate)
+library(gridExtra)
+
+# Definir la ruta de los archivos combinados
+combined_files_folder <- "data/Fitbit/Processed_Files"
+
+# Lista de archivos combinados
+combined_files <- c(
+  "filtered_dailyActivity_merged.csv",
+  "filtered_heartrate_seconds_merged.csv",
+  "filtered_weightLogInfo_merged.csv",
+  "filtered_hourlyCalories_merged.csv"
+)
+
+# Función para leer archivos combinados
+read_combined_data <- function(files_folder, files) {
+  combined_data <- lapply(files, function(file) {
+    read_csv(file.path(files_folder, file))
+  })
+  names(combined_data) <- files
+  return(combined_data)
+}
+
+# Leer los datos combinados
+combined_data <- read_combined_data(combined_files_folder, combined_files)
+
+# Visualizar algunas observaciones de los datos combinados
+head(combined_data[[1]])
+
+summary(cars)
+```
+
+## Including Plots
+
+```{r pressure, echo=FALSE}
+# Graficar distribución de pasos diarios
+combined_daily_steps <- combined_data[["filtered_dailyActivity_merged.csv"]] %>%
+  group_by(Date_time) %>%
+  summarise(AverageSteps = mean(TotalSteps, na.rm = TRUE))
+
+plot_steps <- ggplot(combined_daily_steps, aes(x = Date_time, y = AverageSteps)) +
+  geom_line() +
+  labs(title = "Distribución Promedio de Pasos Diarios", x = "Fecha", y = "Pasos Promedio")
+
+# Graficar distribución de la frecuencia cardíaca
+combined_heart_rate <- combined_data[["filtered_heartrate_seconds_merged.csv"]] %>%
+  group_by(Date_time) %>%
+  summarise(AverageHeartRate = mean(Value, na.rm = TRUE))
+
+plot_heart_rate <- ggplot(combined_heart_rate, aes(x = Date_time, y = AverageHeartRate)) +
+  geom_line() +
+  labs(title = "Distribución de Frecuencia Cardíaca Promedio", x = "Fecha", y = "Frecuencia Cardíaca Promedio")
+
+# Visualizar distribución de WeightKg a lo largo del tiempo
+combined_weight <- combined_data[["filtered_weightLogInfo_merged.csv"]] %>%
+  group_by(Date_time) %>%
+  summarise(AverageWeight = mean(WeightKg, na.rm = TRUE))
+
+plot_weight <- ggplot(combined_weight, aes(x = Date_time, y = AverageWeight)) +
+  geom_line() +
+  labs(title = "Distribución Promedio de Peso (Kg) a lo largo del tiempo", x = "Fecha", y = "Peso Promedio (Kg)")
+
+# Visualizar distribución de Calories a lo largo del tiempo
+combined_calories <- combined_data[["filtered_hourlyCalories_merged.csv"]] %>%
+  group_by(Date_time) %>%
+  summarise(AverageCalories = mean(Calories, na.rm = TRUE))
+
+plot_calories <- ggplot(combined_calories, aes(x = Date_time, y = AverageCalories)) +
+  geom_line() +
+  labs(title = "Distribución Promedio de Calorías a lo largo del tiempo", x = "Fecha", y = "Calorías Promedio")
+
+# Mostrar los gráficos en una sola pantalla
+grid.arrange(plot_steps, plot_heart_rate, plot_weight, plot_calories, ncol = 2)
+```

@@ -1,0 +1,143 @@
+---
+title: "3.-Prepara_procesar_archivos_comunes_ambas_rutas"
+author: "Abel_Sánchez"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r cargar-librerias, warning=TRUE, paged.print=TRUE}
+# Configurar el directorio de trabajo
+if (.Platform$OS.type == "windows") {
+  setwd("C:/Users/FX506/Documents/Portafolio/Bellabeat_2016")
+} else {
+  setwd("~/Portafolio/Bellabeat_2016")
+}
+
+# Limpiar el entorno
+rm(list = ls())
+gc()
+
+# Cargar las librerías
+library(tidyverse)
+library(lubridate)
+
+# Función para leer archivos procesados
+read_filtered_file <- function(path, file) {
+  file_path <- file.path(path, paste0("filtered_", file))
+  if (file.exists(file_path)) {
+    return(read_csv(file_path))
+  } else {
+    return(NULL)
+  }
+}
+
+# Función para procesar y guardar archivos de una ruta
+process_and_save <- function(files_columns, files, input_path, output_path) {
+  for (file in files) {
+    file_path <- file.path(input_path, file)
+    if (file.exists(file_path)) {
+      # Leer archivo
+      data <- read_csv(file_path, col_types = cols(.default = "c"))
+      # Filtrar columnas
+      data <- data %>% select(one_of(files_columns[[file]]))
+      # Guardar archivo procesado
+      output_file_path <- file.path(output_path, paste0("filtered_", file))
+      tryCatch({
+        write_csv(data, output_file_path)
+        print(paste("Archivo procesado y guardado:", output_file_path))
+      }, error = function(e) {
+        print(paste("Error al guardar el archivo:", output_file_path, ":", e$message))
+      })
+    } else {
+      print(paste("El archivo", file, "no existe en la ruta", input_path))
+    }
+  }
+}
+
+# Función para procesar y guardar archivos de ambas rutas
+process_and_save_both <- function(files_columns, files, input_paths, output_path) {
+  common_files <- files[sapply(files, function(file) {
+    file.exists(file.path(input_paths[[1]], file)) && file.exists(file.path(input_paths[[2]], file))
+  })]
+  
+  if (length(common_files) == 0) {
+    print("No hay archivos comunes para procesar.")
+    return()
+  }
+  
+  # Crear carpeta de salida si no existe
+  if (!dir.exists(output_path)) {
+    dir.create(output_path, recursive = TRUE)
+  }
+  
+  # Procesar archivos en ambas rutas y combinarlos
+  filtered_data <- lapply(common_files, function(file) {
+    data_list <- lapply(input_paths, function(input_path) {
+      file_path <- file.path(input_path, file)
+      if (file.exists(file_path)) {
+        read_csv(file_path, col_types = cols(.default = "c")) %>% 
+          select(one_of(files_columns[[file]]))
+      } else {
+        NULL
+      }
+    })
+    
+    # Combinar datos de ambas rutas
+    combined_data <- bind_rows(data_list[!sapply(data_list, is.null)])
+    
+    # Filtrar por fecha (si es necesario)
+    start_date <- as.Date("2016-01-01")
+    end_date <- as.Date("2016-12-31")
+    combined_data <- combined_data %>% filter(Date_time >= start_date & Date_time <= end_date)
+    
+    combined_data
+  })
+  
+  # Guardar los datos combinados y filtrados
+  mapply(function(df, file) {
+    if (!is.null(df)) {
+      output_file_path <- file.path(output_path, paste0("filtered_", file))
+      tryCatch({
+        write_csv(df, output_file_path)
+        print(paste("Archivo final guardado:", output_file_path))
+      }, error = function(e) {
+        print(paste("Error al guardar el archivo:", output_file_path, ":", e$message))
+      })
+    }
+  }, filtered_data, common_files)
+}
+
+# Definir las rutas de las carpetas
+ruta_principal <- "data/Fitbit/raw/Fitbit_12.03.16_to_11.04.16/"
+ruta_adicional <- "data/Fitbit/raw/Fitbit_12.04.16_to_12.05.16/"
+
+# Definir la ruta de salida de los archivos procesados
+output_folder <- "data/Fitbit/Processed_Files"
+
+
+# Definir columnas esperadas para cada archivo
+files_columns <- list(
+  "dailyActivity_merged.csv" = c("Id", "Date_time", "TotalSteps", "TotalDistance", "TrackerDistance", "LoggedActivitiesDistance", "VeryActiveDistance", "ModeratelyActiveDistance", "LightActiveDistance", "SedentaryActiveDistance", "VeryActiveMinutes", "FairlyActiveMinutes", "LightlyActiveMinutes", "SedentaryMinutes", "Calories"),
+  "heartrate_seconds_merged.csv" = c("Id", "Date_time", "Value"),
+  "weightLogInfo_merged.csv" = c("Id", "Date_time", "WeightKg", "WeightPounds", "Fat", "BMI", "IsManualReport", "LogId"),
+  "hourlyCalories_merged.csv" = c("Id", "Date_time", "Calories"),
+  "hourlyIntensities_merged.csv" = c("Id", "Date_time", "TotalIntensity", "AverageIntensity"),
+  "hourlySteps_merged.csv" = c("Id", "Date_time", "StepTotal")
+)
+
+# Definir archivos a procesar
+archivos <- c(
+  "dailyActivity_merged.csv",
+  "heartrate_seconds_merged.csv",
+  "weightLogInfo_merged.csv",
+  "hourlyCalories_merged.csv",
+  "hourlyIntensities_merged.csv",
+  "hourlySteps_merged.csv"
+)
+
+# Procesar y guardar archivos de ambas rutas
+process_and_save_both(files_columns, archivos, list(ruta_principal, ruta_adicional), output_folder)
+
+summary(cars)
+```
+

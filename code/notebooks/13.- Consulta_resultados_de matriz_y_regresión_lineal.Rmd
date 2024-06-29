@@ -1,0 +1,31 @@
+---
+title: "13.- Consulta_resultados_de_matriz_y_regresión_lineal"
+author: "Abel_Sánchez"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Configurar el directorio de trabajo
+if (.Platform$OS.type == "windows") {
+  setwd("C:/Users/FX506/Documents/Portafolio/Bellabeat_2016")
+} else {
+  setwd("~/Portafolio/Bellabeat_2016")
+}
+
+# Cargar la matriz de correlación desde el archivo .rds
+matriz_correlacion <- readRDS(file.path("output/minsa", "matriz_correlacion.rds"))
+
+# Visualizar la matriz de correlación
+print(matriz_correlacion)
+
+# Cargar el resumen del modelo de regresión lineal desde el archivo .rds
+resumen_modelo <- readRDS(file.path("output/minsa", "modelo_regresion.rds"))
+
+# Visualizar el resumen del modelo de regresión lineal
+print(resumen_modelo)
+summary(cars)
+```
