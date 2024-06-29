@@ -20,35 +20,30 @@ Bienvenido a mi portafolio de análisis de datos. Aquí presento algunos de los 
 - `reports/`: Contiene los informes HTML y PDF generados.
 - `README.md`: Este archivo, que proporciona una descripción general del proyecto.
 
-
 ## Proyectos
 
 ### Análisis de Datos de Fitbit
 
 - **Descripción**: Análisis de datos de actividad física, frecuencia cardíaca y peso registrados por dispositivos Fitbit.
 - **Archivos**:
-  -  [Fibit RMarkdown](./Abesan7411/Abesan7411.github.io/code/notebooks/fitbit_correlacion_y_regresion.Rmd)
-
-    - [Fitbit análisis estadistico PDF](./Abesan7411/Abesan7411.github.io/report/fitbit_correlacion_y_regresion.pdf)
+  - [Fitbit RMarkdown](code/notebooks/fitbit_correlacion_y_regresion.Rmd)
+  - [Fitbit análisis estadistico PDF](reports/fitbit_correlacion_y_regresion.pdf)
 
 ### Análisis de Datos del MINSA
 
 - **Descripción**: Análisis de datos proporcionados por el MINSA sobre la percepción de salud, enfermedades crónicas y nivel de actividad física.
 - **Archivos**:
-  - [Minsa RMarkdown](./Abesan7411/Abesan7411.github.io/code/notebooks/minsa_analisis_correlacion.Rmd)
-
-    - [Minsa análisis estadistico PDF](./Abesan7411/Abesan7411.github.io/report/minsa_analisis_correlacions.pdf)
-
+  - [Minsa RMarkdown](code/notebooks/minsa_analisis_correlacion.Rmd)
+  - [Minsa análisis estadistico PDF](reports/minsa_analisis_correlacion.pdf)
 
 ## Datos
 
 - **Fitbit**: Datos de actividad física recopilados entre marzo y mayo de 2016.
-  - [Datos Fitbit](./Abesan7411/Abesan7411.github.io/data/Fitbit/raw/)
-  - [Datos Fitbit Procesados](.Abesan7411/Abesan7411.github.io/data/Fitbit/Processed_Files/)
+  - [Datos Fitbit](data/Fitbit/raw/)
+  - [Datos Fitbit Procesados](data/Fitbit/Processed_Files/)
 - **MINSA**: Datos de la encuesta de salud realizada en 2017.
-  - [Datos MINSA](.Abesan7411/Abesan7411.github.io/data/minsa/raw/)
+  - [Datos MINSA](data/minsa/raw/)
 
- 
 ## Resultados Visuales
 
 - **Visualización de los datos de Fitbit**:
@@ -106,11 +101,7 @@ Desarrollar campañas que utilicen los insights obtenidos de los análisis de Fi
 #### Uso de Herramientas y Soporte Tecnológico
 Este informe se ha desarrollado con el apoyo de diversas herramientas y plataformas tecnológicas. Aunque mi formación en contabilidad, el máster en finanzas, formaciones en marketing y mi experiencia previa como senior contador y controller financiero durante aproximadamente 15 años han sido fundamentales para comprender y analizar los datos, el soporte de herramientas avanzadas, incluyendo la inteligencia artificial (IA), ha sido crucial para el desarrollo y perfeccionamiento del código utilizado en este análisis.
 
-
-
-- [Resumen Ejecutivo](./Abesan7411/Abesan7411.github.io/report/Resumen_ejecutivo_caso_Bellabeat_2019_final.pdf)
-
-
+- [Resumen Ejecutivo](reports/Resumen_ejecutivo_caso_Bellabeat_2019_final.pdf)
 
 ## Contacto
 
